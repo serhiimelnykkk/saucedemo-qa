@@ -65,22 +65,16 @@ for (const username of users) {
     });
 
     test("A-Z sorting by name works correctly", async ({ inventoryPage }) => {
-      // Sorting is A-Z by default, so we need to change it to Z-A first to test A-Z sorting
-      const selectedOption = await inventoryPage.sortingSelector.evaluate(
-        (element) => {
-          const selectElement = element as HTMLSelectElement;
-          return selectElement.options[selectElement.selectedIndex];
-        },
-      );
-      if (selectedOption.value === "az") {
-        inventoryPage.sortingSelector.selectOption("za");
-      }
+      // Sorting is A-Z by default. To prove A-Z sorting works, we first sort to Z-A
+      // and assert that the product order actually changes to Z-A.
+      await inventoryPage.sortProductsBy("za");
+      const namesZA = await inventoryPage.getProductNames();
+      expect(namesZA).toEqual([...namesZA].sort().reverse());
 
+      // Now we sort back to A-Z and assert that it is successfully sorted A-Z.
       await inventoryPage.sortProductsBy("az");
-
-      const names = await inventoryPage.getProductNames();
-      const sortedNames = [...names].sort();
-      expect(names).toEqual(sortedNames);
+      const namesAZ = await inventoryPage.getProductNames();
+      expect(namesAZ).toEqual([...namesAZ].sort());
     });
 
     test("Z-A sorting by name works correctly", async ({ inventoryPage }) => {
