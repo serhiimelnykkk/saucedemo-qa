@@ -5,14 +5,14 @@ export class ProductPage {
   readonly addToCartButton: Locator;
   readonly removeButton: Locator;
   readonly backToProductsButton: Locator;
-  readonly productName: Locator;
+  readonly itemName: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.addToCartButton = page.getByRole("button", { name: "Add to cart" });
     this.removeButton = page.getByRole("button", { name: "Remove" });
     this.backToProductsButton = page.getByTestId("back-to-products");
-    this.productName = page.getByTestId("inventory-item-name");
+    this.itemName = page.getByTestId("inventory-item-name");
   }
 
   async goto(productId: string) {
