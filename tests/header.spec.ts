@@ -2,13 +2,13 @@ import { test as base, expect } from "@playwright/test";
 import { CartPage } from "@/pages/cartPage";
 import { InventoryPage } from "@/pages/inventoryPage";
 import { LoginPage } from "@/pages/loginPage";
-import { ProductPage } from "@/pages/productPage";
+import { ItemPage } from "@/pages/itemPage";
 import users from "./users.json" with { type: "json" };
 
 type Fixtures = {
   inventoryPage: InventoryPage;
   cartPage: CartPage;
-  productPage: ProductPage;
+  productPage: ItemPage;
 };
 
 const test = base.extend<Fixtures>({

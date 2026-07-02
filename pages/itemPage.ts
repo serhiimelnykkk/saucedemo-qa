@@ -1,6 +1,6 @@
 import { type Locator, type Page } from "@playwright/test";
 
-export class ProductPage {
+export class ItemPage {
   readonly page: Page;
   readonly addToCartButton: Locator;
   readonly removeButton: Locator;
