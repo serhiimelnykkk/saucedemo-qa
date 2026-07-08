@@ -2,8 +2,8 @@
 
 Automated test suite for [saucedemo.com](https://www.saucedemo.com) built with Playwright and TypeScript.
 
-[![Playwright Tests](https://github.com/username/repo/actions/workflows/playwright.yml/badge.svg)](https://github.com/username/repo/actions/workflows/playwright.yml)
-[![Allure Report](https://img.shields.io/badge/Allure%20Report-HTML-blue.svg)](https://username.github.io/repo)
+[![Playwright Tests](https://github.com/serhiimelnykkk/saucedemo-qa/actions/workflows/playwright.yml/badge.svg)](https://github.com/serhiimelnykkk/saucedemo-qa/actions/workflows/playwright.yml)
+[![Allure Report](https://img.shields.io/badge/Allure%20Report-HTML-blue.svg)](https://serhiimelnykkk.github.io/saucedemo-qa/)
 
 ---
 
