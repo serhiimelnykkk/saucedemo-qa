@@ -2,13 +2,13 @@ import { test as base, expect } from "@playwright/test";
 import { CartPage } from "@/pages/cartPage";
 import { InventoryPage } from "@/pages/inventoryPage";
 import { LoginPage } from "@/pages/loginPage";
-import { ProductPage } from "@/pages/productPage";
+import { ItemPage } from "@/pages/itemPage";
 import users from "./users.json" with { type: "json" };
 
 type Fixtures = {
   inventoryPage: InventoryPage;
   cartPage: CartPage;
-  productPage: ProductPage;
+  itemPage: ItemPage;
 };
 
 const test = base.extend<Fixtures>({
@@ -20,9 +20,9 @@ const test = base.extend<Fixtures>({
     const cartPage = new CartPage(page);
     await use(cartPage);
   },
-  productPage: async ({ page }, use) => {
-    const productPage = new ProductPage(page);
-    await use(productPage);
+  itemPage: async ({ page }, use) => {
+    const itemPage = new ItemPage(page);
+    await use(itemPage);
   },
 });
 
@@ -123,11 +123,11 @@ for (const username of users) {
 
     test("Item added from a product page appears in cart", async ({
       cartPage,
-      productPage,
+      itemPage,
     }) => {
-      await productPage.goto("0");
-      const expectedName = await productPage.productName.textContent();
-      await productPage.addToCartButton.click();
+      await itemPage.goto("0");
+      const expectedName = await itemPage.itemName.textContent();
+      await itemPage.addToCartButton.click();
       await cartPage.goto();
 
       const firstItem = cartPage.items.first();
@@ -138,12 +138,12 @@ for (const username of users) {
     });
 
     test("Item removed from a product page disappears from cart", async ({
-      productPage,
+      itemPage,
       cartPage,
     }) => {
-      await productPage.goto("0");
-      const expectedName = await productPage.productName.textContent();
-      await productPage.addToCartButton.click();
+      await itemPage.goto("0");
+      const expectedName = await itemPage.itemName.textContent();
+      await itemPage.addToCartButton.click();
 
       await cartPage.goto();
       await expect(cartPage.items).toBeVisible();
